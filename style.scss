@@ -2,17 +2,109 @@ $color_off: rgba(244, 244, 244, 1);
 $color_on: rgba(51, 121, 217, 1);
 
 .tumbler__side {
-    width: 73px;
+    width: 60px;
     height: 30px;
-    background-color: $color_off;
     border-radius: 10px;
-}
-
-.tumbler__side:first-of-type {
-    background-color: $color_on;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .tumbler {
     display: flex;
+    justify-content: space-between;
+    height: 30px;
+    width: 130px;
+    background-color: $color_off;
+    border-radius: 10px;
+    position: relative;
+}
 
+
+.tumbler__anim {
+    width: 60%;
+    height: 30px;
+    background-color: $color_on;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    // transition: all 1s;
+}
+
+.tumbler__checkbox {
+
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    position: absolute;
+    width: 130px;
+    height: 30px;
+    animation: 5s 1 alternate r;
+    animation-fill-mode: both;
+    
+}
+
+@keyframes r {
+    50% {
+        border-radius: 100% 40% 40% 100%; 
+    }
+
+    100% {
+        border-radius: 10px;
+        left: 0;
+        width: 40%;
+        --checked: 0;
+    }
+}
+
+.tumbler__checkbox:checked~.tumbler__anim {
+    // right: 0;
+    // left: auto;
+    
+    // transform: matrix(1, 0, 0, 1, 80, 0);
+    animation: 1s 1 alternate resize;
+    animation-fill-mode: both;
+    --checked: 1;
+}
+
+@keyframes resize {
+
+    0% {
+        box-shadow: -7px 0 5px rgba(51, 121, 217, 1), -21px 0 5px rgba(51, 121, 217, 0.5), -30px 0 5px rgba(51, 121, 217, 0.2);
+        width: 20%;
+    }
+
+    100% {
+        width: 60%;
+        left: calc(130px - 60%);
+    }
+}
+
+
+// @keyframes resize {
+
+//     0% {
+//         border-radius: 100% 80% 80% 100%;
+//         width: 80%;
+        
+//     }
+
+//     100% {
+//         width: 60%;
+//         border-radius: 10px;
+//         left: calc(130px - 60%);
+//     }
+// }
+
+
+
+
+
+.tumbpler__paragraph {
+    font-weight: 200;
+    font-size: 15px;
+    z-index: 2;
+    position: relative;
 }
