@@ -11,19 +11,18 @@
 
 <body>
     <form class="tumbler">
-        <input class="tumbler__input" type="radio" id="1" name="field">
-        <label for="1"></label>
-        <input class="tumbler__input" type="radio" id="2" name="field">
-        <label for="2"></label>
+        <input class="tumbler__input" type="radio" name="field" checked>
+        <input class="tumbler__input" type="radio" name="field">
         <div class="tumbler__anim"></div>
 
         <div class="tumbler__side">
-            <div class="tumbler__arrow_rigth"></div>
-            <p class="tumbpler__paragraph">future</p>
-        </div>
-        <div class="tumbler__side">
-            <div class="tumbler__arrow_left"></div>
+            <div class="tumbler__arrow tumbler__arrow_direction_left"></div>
             <p class="tumbpler__paragraph">past</p>
+        </div>
+
+        <div class="tumbler__side">
+            <p class="tumbpler__paragraph">future</p>
+            <div class="tumbler__arrow tumbler__arrow_direction_right"></div>
         </div>
 
 

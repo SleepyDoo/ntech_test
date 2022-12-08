@@ -9,41 +9,63 @@
   overflow: hidden;
 }
 
-.tumbpler__paragraph {
-  font-weight: 200;
-  font-size: 15px;
-  z-index: 3;
-  position: relative;
-  margin: 0;
-}
-
 .tumbler__side {
-  position: relative;
-  width: 65px;
+  --left-arrow: url("./media/arrow-dark.svg");
+  --right-arrow: url("./media/arrow-light.svg");
+  width: 58.5px;
   height: 30px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+  gap: 5px;
+}
+
+.tumbpler__paragraph {
+  color: black;
+  font-weight: 200;
+  font-size: 14.4444444444px;
+  margin: 0;
+  margin-bottom: 2.8888888889px;
+}
+
+.tumbler__arrow {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.5s;
+  transition: all 1s ease 0.1s;
+}
+
+.tumbler__arrow_direction_left {
+  background-image: var(--left-arrow);
+  transform: rotate(180deg);
+}
+
+.tumbler__arrow_direction_right {
+  background-image: var(--right-arrow);
 }
 
 .tumbler__anim {
-  width: 50%;
+  width: 52px;
   height: 30px;
   background-color: rgb(51, 121, 217);
   border-radius: 10px;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
 }
 
 .tumbler__input {
   position: absolute;
   margin: 0;
   padding: 0;
-  width: 60px;
+  width: 65px;
   height: 30px;
   opacity: 0;
   z-index: 4;
@@ -52,23 +74,35 @@
 }
 
 .tumbler__input:first-of-type {
+  width: 58.5px;
   left: 0;
 }
 
 .tumbler__input:last-of-type {
+  width: 71.5px;
   right: 0;
+}
+
+.tumbler__input:first-of-type:checked ~ .tumbler__side {
+  --left-arrow: url("./media/arrow-light.svg") ;
+}
+
+.tumbler__input:first-of-type:checked ~ .tumbler__side {
+  --right-arrow: url("./media/arrow-dark.svg") ;
 }
 
 .tumbler__input:first-of-type:checked ~ .tumbler__anim {
   left: 0;
-  animation: 0.5s 1 alternate to-left;
+  animation: 1s 1 alternate to-left;
   animation-fill-mode: forwards;
+  --left-arrow: url("./media/arrow-dark.svg");
 }
 
 .tumbler__input:last-of-type:checked ~ .tumbler__anim {
   left: calc(130px - 60%);
-  animation: 0.5s 1 alternate to-right;
+  animation: 1s 1 alternate to-right;
   animation-fill-mode: forwards;
+  --right-arrow: url("./media/arrow-light.svg");
 }
 
 @keyframes to-left {
@@ -78,7 +112,7 @@
     left: calc(130px - 60%);
   }
   100% {
-    width: 50%;
+    width: 58.5px;
     border-radius: 10px;
     left: 0;
   }
@@ -90,9 +124,9 @@
     left: 0;
   }
   100% {
-    width: 50%;
+    width: 71.5px;
     border-radius: 10px;
-    left: calc(130px - 50%);
+    left: calc(130px - 55%);
   }
 }
 
