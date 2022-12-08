@@ -11,3 +11,8 @@ $color_on: rgba(51, 121, 217, 1);
 .tumbler__side:first-of-type {
     background-color: $color_on;
 }
+
+.tumbler {
+    display: flex;
+
+}

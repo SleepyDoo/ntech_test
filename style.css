@@ -9,4 +9,8 @@
   background-color: rgb(51, 121, 217);
 }
 
+.tumbler {
+  display: flex;
+}
+
 /*# sourceMappingURL=style.css.map */
