@@ -12,12 +12,13 @@
 .tumbpler__paragraph {
   font-weight: 200;
   font-size: 15px;
-  z-index: 2;
+  z-index: 3;
   position: relative;
   margin: 0;
 }
 
 .tumbler__side {
+  position: relative;
   width: 65px;
   height: 30px;
   border-radius: 10px;
@@ -39,16 +40,60 @@
 }
 
 .tumbler__input {
+  position: absolute;
   margin: 0;
   padding: 0;
-  width: 65px;
-  clip: rect(0 0 0 0);
+  width: 60px;
+  height: 30px;
   opacity: 0;
+  z-index: 4;
   border-radius: 10px;
+  top: 0;
 }
 
-.tumbler__input:focus ~ .tumbler__anim {
-  background-color: aqua;
+.tumbler__input:first-of-type {
+  left: 0;
+}
+
+.tumbler__input:last-of-type {
+  right: 0;
+}
+
+.tumbler__input:first-of-type:checked ~ .tumbler__anim {
+  left: 0;
+  animation: 0.5s 1 alternate to-left;
+  animation-fill-mode: forwards;
+}
+
+.tumbler__input:last-of-type:checked ~ .tumbler__anim {
+  left: calc(130px - 60%);
+  animation: 0.5s 1 alternate to-right;
+  animation-fill-mode: forwards;
+}
+
+@keyframes to-left {
+  0% {
+    border-radius: 80% 100% 100% 80%;
+    width: 80%;
+    left: calc(130px - 60%);
+  }
+  100% {
+    width: 50%;
+    border-radius: 10px;
+    left: 0;
+  }
+}
+@keyframes to-right {
+  0% {
+    border-radius: 100% 80% 80% 100%;
+    width: 80%;
+    left: 0;
+  }
+  100% {
+    width: 50%;
+    border-radius: 10px;
+    left: calc(130px - 50%);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
