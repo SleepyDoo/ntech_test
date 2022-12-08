@@ -1,0 +1,13 @@
+$color_off: rgba(244, 244, 244, 1);
+$color_on: rgba(51, 121, 217, 1);
+
+.tumbler__side {
+    width: 73px;
+    height: 30px;
+    background-color: $color_off;
+    border-radius: 10px;
+}
+
+.tumbler__side:first-of-type {
+    background-color: $color_on;
+}

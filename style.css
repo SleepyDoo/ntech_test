@@ -1,0 +1,12 @@
+.tumbler__side {
+  width: 73px;
+  height: 30px;
+  background-color: rgb(244, 244, 244);
+  border-radius: 10px;
+}
+
+.tumbler__side:first-of-type {
+  background-color: rgb(51, 121, 217);
+}
+
+/*# sourceMappingURL=style.css.map */
