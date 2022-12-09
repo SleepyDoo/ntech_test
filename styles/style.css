@@ -1,17 +1,27 @@
+body {
+  display: flex;
+  gap: 30px;
+}
+
 .tumbler {
+  background-color: rgb(244, 244, 244);
   display: flex;
   justify-content: space-between;
   height: 30px;
   width: 130px;
-  background-color: rgb(244, 244, 244);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  transition: opacity 0.2s linear;
+}
+
+.tumbler:hover {
+  opacity: 0.9;
 }
 
 .tumbler__side {
-  --left-arrow: url("./media/arrow-dark.svg");
-  --right-arrow: url("./media/arrow-light.svg");
+  --left-arrow: url("../media/arrow-dark.svg");
+  --right-arrow: url("../media/arrow-light.svg");
   width: 58.5px;
   height: 30px;
   border-radius: 10px;
@@ -38,8 +48,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.5s;
-  transition: all 1s ease 0.1s;
+  transition: backgroung-image 0.2s ease 0.1s;
 }
 
 .tumbler__arrow_direction_left {
@@ -84,25 +93,27 @@
 }
 
 .tumbler__input:first-of-type:checked ~ .tumbler__side {
-  --left-arrow: url("./media/arrow-light.svg") ;
+  --left-arrow: url("../media/arrow-light.svg") ;
 }
 
 .tumbler__input:first-of-type:checked ~ .tumbler__side {
-  --right-arrow: url("./media/arrow-dark.svg") ;
+  --right-arrow: url("../media/arrow-dark.svg") ;
 }
 
 .tumbler__input:first-of-type:checked ~ .tumbler__anim {
   left: 0;
-  animation: 1s 1 alternate to-left;
+  animation: 0.2s 1 alternate to-left;
   animation-fill-mode: forwards;
-  --left-arrow: url("./media/arrow-dark.svg");
+  animation-timing-function: ease;
+  --left-arrow: url("../media/arrow-dark.svg");
 }
 
 .tumbler__input:last-of-type:checked ~ .tumbler__anim {
   left: calc(130px - 60%);
-  animation: 1s 1 alternate to-right;
+  animation: 0.2s 1 alternate to-right;
   animation-fill-mode: forwards;
-  --right-arrow: url("./media/arrow-light.svg");
+  animation-timing-function: ease;
+  --right-arrow: url("../media/arrow-light.svg");
 }
 
 @keyframes to-left {
