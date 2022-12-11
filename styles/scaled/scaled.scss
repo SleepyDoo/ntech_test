@@ -5,6 +5,8 @@ $color_on: #748cab;
 $text-color: #0d1321;
 $color_off: #e1e5f2;
 $light-color: #f2d492;
+$arrow-color-on: #ffffff;
+$arrow-color-off: #555b6e;
 
 .tumbler_type_scaled {
     background-color: $color_off;
@@ -14,16 +16,20 @@ $light-color: #f2d492;
     background-color: $color_on;
 }
 
-.tumbler__side_type_scaled {
-    --right-arrow: url("../../media/arrow-dark.svg");
+.tumbler__input:first-of-type:checked~.tumbler__side_type_scaled {
+    --left-arrow: #{$arrow-color-on};
+    --right-arrow: #{$arrow-color-off};
+
+    --left-p: #{$arrow-color-on};
+    --right-p: #{$arrow-color-off};
 }
 
-.tumbpler__paragraph_type_scaled {
-    color: $text-color;
-}
+.tumbler__input:last-of-type:checked~.tumbler__side_type_scaled {
+    --right-arrow: #{$arrow-color-on};
+    --left-arrow: #{$arrow-color-off};
 
-.tumbler__arrow_type_scaled {
-    opacity: 0.7;
+    --left-p: #{$arrow-color-off};
+    --right-p: #{$arrow-color-on};
 }
 
 .tumbler__input:first-of-type:checked~.tumbler__anim_type_scale {
@@ -49,7 +55,7 @@ $light-color: #f2d492;
     }
 
     50% {
-        transform: scale(1.8);
+        width: calc($width*2);
     }
 
     100% {
@@ -70,7 +76,7 @@ $light-color: #f2d492;
     }
 
     50% {
-        transform: scale(1.6);
+        width: calc($width*2);
     }
 
     100% {

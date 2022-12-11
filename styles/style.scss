@@ -1,14 +1,11 @@
-// $color_off: #ede3e9;
-// $color_on: #9f84bd;
-
-// $shadow-color1: #FFE200;
-// $shadow-color2: #F2FD3F;
-
+// Переменные, задающие основные параметры кнопки 
 $color_on: rgba(51, 121, 217, 1);
 $text-color: black;
 $color_off: rgba(244, 244, 244, 1);
+$arrow-color-on: #FFFFFF;
+$arrow-color-off: #222222;
 
-$width: 130px;
+$width: 40px;
 $border-rad: 10px;
 $height: 30px;
 $font-size: calc($width/9);
@@ -21,6 +18,7 @@ body {
     gap: 30px;
 }
 
+// Стилизация основных элементов
 .tumbler {
     background-color: $color_off;
     display: flex;
@@ -31,18 +29,20 @@ body {
     position: relative;
     overflow: hidden;
     transition: opacity .2s linear;
-}
 
-.tumbler:hover {
-    opacity: .9;
+    &:hover {
+        opacity: .9;
+    }
 }
 
 .tumbler__side {
 
-    --left-arrow: url("../media/arrow-dark.svg");
-    --right-arrow: url("../media/arrow-light.svg");
+    --left-arrow: #{$arrow-color-on};
+    --right-arrow: #{$arrow-color-off};
+    --left-p: #{$arrow-color-on};
+    --right-p: #{$arrow-color-off};
 
-    width: calc($width*0.45);
+    width: calc($width*0.5);
     height: $height;
     border-radius: $border-rad;
     display: flex;
@@ -53,7 +53,7 @@ body {
     gap: $gap;
 }
 
-.tumbpler__paragraph {
+.tumbler__paragraph {
     color: $text-color;
     font-weight: 200;
     font-size: $font-size;
@@ -65,14 +65,30 @@ body {
     }
 }
 
+.tumbler__paragraph_left {
+    color: var(--left-p);
+}
+
+.tumbler__paragraph_right {
+    color: var(--right-p);
+}
+
 .tumbler__arrow {
     position: relative;
     width: $arrow-size;
     height: $arrow-size;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: backgroung-image $anim_dur ease .1s;
+
+    // Стрелки вставляю в качестве маски, чтобы была возможность легко менять их цвет с помощью css, не вставляя svg инлайново в html
+    mask-image: url("../media/arrow-dark.svg");
+    mask-size: 100%;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: url("../media/arrow-dark.svg");
+    -webkit-mask-size: 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+
+    background-color: #222222;
 
     @if $width < 110px {
         display: none;
@@ -81,17 +97,19 @@ body {
     @if $width < 70px {
         display: flex;
     }
-
 }
 
 .tumbler__arrow_direction_left {
-    background-image: var(--left-arrow);
+    background-color: var(--left-arrow);
     transform: rotate(180deg);
 }
 
 .tumbler__arrow_direction_right {
-    background-image: var(--right-arrow);
+    background-color: var(--right-arrow);
 }
+
+
+// Стилизация и функциональность анимации
 
 .tumbler__anim {
     width: calc($width*0.4);
@@ -113,42 +131,53 @@ body {
     z-index: 4;
     border-radius: $border-rad;
     top: 0;
-}
 
-.tumbler__input:first-of-type {
-    width: calc($width*0.45);
-    left: 0;
-}
+    &:first-of-type {
+        width: calc($width*0.45);
+        left: 0;
 
-.tumbler__input:last-of-type {
-    width: calc($width*0.55);
-    right: 0;
-}
+        &:checked {
+            ~.tumbler__anim {
+                left: 0;
+                animation: $anim_dur 1 alternate to-left;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease;
+            }
 
+            ~.tumbler__side {
+                --left-arrow: #{$arrow-color-on};
+                --right-arrow: #{$arrow-color-off};
 
-.tumbler__input:first-of-type:checked~.tumbler__side {
-    --left-arrow: url("../media/arrow-light.svg")
-}
+                --left-p: #{$arrow-color-on};
+                --right-p: #{$arrow-color-off};
+            }
+        }
 
-.tumbler__input:first-of-type:checked~.tumbler__side {
-    --right-arrow: url("../media/arrow-dark.svg")
-}
+    }
 
+    &:last-of-type {
+        width: calc($width*0.55);
+        right: 0;
 
-.tumbler__input:first-of-type:checked~.tumbler__anim {
-    left: 0;
-    animation: $anim_dur 1 alternate to-left;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-    --left-arrow: url("../media/arrow-dark.svg");
-}
+        &:checked {
 
-.tumbler__input:last-of-type:checked~.tumbler__anim {
-    left: calc($width - 60%);
-    animation: $anim_dur 1 alternate to-right;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-    --right-arrow: url("../media/arrow-light.svg");
+            ~.tumbler__anim {
+                left: calc($width - 60%);
+                animation: $anim_dur 1 alternate to-right;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease;
+            }
+
+            ~.tumbler__side {
+                --right-arrow: #{$arrow-color-on};
+                --left-arrow: #{$arrow-color-off};
+
+                --left-p: #{$arrow-color-off};
+                --right-p: #{$arrow-color-on};
+            }
+
+        }
+    }
 }
 
 @keyframes to-left {
