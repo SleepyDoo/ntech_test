@@ -1,52 +1,63 @@
 .tumbler_type_scaled {
   background-color: #e1e5f2;
+  width: 100px;
 }
 
-.tumbler__anim_type_scale {
-  background-color: #748cab;
+.tumbler__side_type_scaled .tumbler__paragraph {
+  font-size: 11.1111111111px;
+  display: flex;
+}
+.tumbler__side_type_scaled .tumbler__arrow {
+  display: none;
 }
 
-.tumbler__input:first-of-type:checked ~ .tumbler__side_type_scaled {
+.tumbler__input_type_scaled:first-of-type {
+  width: 45px;
+}
+.tumbler__input_type_scaled:first-of-type:checked ~ .tumbler__side_type_scaled {
   --left-arrow: #ffffff;
   --right-arrow: #555b6e;
   --left-p: #ffffff;
   --right-p: #555b6e;
 }
-
-.tumbler__input:last-of-type:checked ~ .tumbler__side_type_scaled {
+.tumbler__input_type_scaled:first-of-type:checked ~ .tumbler__anim_type_scaled {
+  animation: 0.2s 1 alternate to-left-scaled;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+}
+.tumbler__input_type_scaled:last-of-type {
+  width: 55px;
+}
+.tumbler__input_type_scaled:last-of-type:checked ~ .tumbler__side_type_scaled {
   --right-arrow: #ffffff;
   --left-arrow: #555b6e;
   --left-p: #555b6e;
   --right-p: #ffffff;
 }
-
-.tumbler__input:first-of-type:checked ~ .tumbler__anim_type_scale {
-  animation: 0.2s 1 alternate to-left-scaled;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease;
-}
-
-.tumbler__input:last-of-type:checked ~ .tumbler__anim_type_scale {
+.tumbler__input_type_scaled:last-of-type:checked ~ .tumbler__anim_type_scaled {
   animation: 0.2s 1 alternate to-right-scaled;
   animation-fill-mode: forwards;
   animation-timing-function: ease;
   background-color: #f2d492;
 }
 
+.tumbler__anim_type_scaled {
+  background-color: #748cab;
+}
+
 @keyframes to-left-scaled {
   0% {
     border-radius: 80% 100% 100% 80%;
     width: 80%;
-    left: calc(130px - 60%);
+    left: calc(100px - 60%);
   }
   50% {
-    width: 260px;
+    width: 100px;
   }
   100% {
-    width: 58.5px;
+    width: 45px;
     border-radius: 10px;
     left: 0;
-    transform: scale(1);
   }
 }
 @keyframes to-right-scaled {
@@ -56,12 +67,12 @@
     left: 0;
   }
   50% {
-    width: 260px;
+    width: 100px;
   }
   100% {
-    width: 71.5px;
+    width: 55px;
     border-radius: 10px;
-    left: calc(130px - 55%);
+    left: calc(100px - 55%);
   }
 }
 

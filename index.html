@@ -5,63 +5,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Buttonchik</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <form class="tumbler">
-        <input class="tumbler__input" type="radio" name="field" checked>
-        <input class="tumbler__input" type="radio" name="field">
-        <div class="tumbler__anim"></div>
+    <div class="container">
+        <h1 class="container__heading">Тестовое задание по макету Buttonchik</h1>
+        <p class="container__text">Представляю Вам три варианта тумблера с различными цветовыми решениями, а так же
+            с различными анимациями переключения. <br> Под каждый стиль кнопки создан scss-файл: neon.scss, scaled.scss
+            и
+            style.scss.
+            В начале каждого файла заданы переменные, с помощью которых можно с легкостью изменить цветовую палитру или
+            размер каждой кнопки.
+            В зависимости от заданного размера кнопки будет меняться ее содержимое, данный подход облегчит написание
+            адаптивной верстки.
+            <br> Что не получилось: <br>
+            Менять размер стороны кнопки в зависимости от содержимого. В течении выполнения задания я пришла к выводу,
+            что
+            без использования js я не смогу реализовать плавную анимацию, при этом сохранив "резиновость" кнопки.
+            Я решила поставить анимацию в приоритет и размеры сторон кнопки задала в процентах.
+        </p>
+        <div class="container__tumblers">
 
-        <div class="tumbler__side">
-            <div class="tumbler__arrow tumbler__arrow_direction_left"></div>
-            <p class="tumbler__paragraph tumbler__paragraph_left">past</p>
+            <form class="tumbler tumbler_type_neon">
+                <input class="tumbler__input tumbler__input_type_neon" type="radio" name="neon" id="1" checked>
+                <input class="tumbler__input tumbler__input_type_neon" type="radio" name="neon" id="2">
+                <div class="tumbler__anim tumbler__anim_type_neon"></div>
+
+                <div class="tumbler__side tumbler__side_type_neon">
+                    <div class="tumbler__arrow tumbler__arrow_direction_left"></div>
+                    <label for="1" class="tumbler__paragraph tumbler__paragraph_left">past</label>
+                </div>
+
+                <div class="tumbler__side tumbler__side_type_neon">
+                    <label for="2" class="tumbler__paragraph tumbler__paragraph_right">future</label>
+                    <div class="tumbler__arrow tumbler__arrow_direction_right"></div>
+                </div>
+            </form>
+
+            <form class="tumbler tumbler_type_scaled">
+                <input class="tumbler__input tumbler__input_type_scaled" type="radio" name="scaled" id="1" checked>
+                <input class="tumbler__input tumbler__input_type_scaled" type="radio" name="scaled" id="2">
+                <div class="tumbler__anim tumbler__anim_type_scaled"></div>
+
+                <div class="tumbler__side tumbler__side_type_scaled">
+                    <div class="tumbler__arrow tumbler__arrow_direction_left tumbler__arrow_type_scaled"></div>
+                    <label for="1" class="tumbler__paragraph tumbler__paragraph_left">past</label>
+                </div>
+
+                <div class="tumbler__side tumbler__side_type_scaled">
+                    <label for="2" class="tumbler__paragraph tumbler__paragraph_right">future</label>
+                    <div class="tumbler__arrow tumbler__arrow_direction_right tumbler__arrow_type_scaled"></div>
+                </div>
+            </form>
+
+
+
+
+
+
+            <form class="tumbler">
+                <input class="tumbler__input" type="radio" name="normal" id="1" checked>
+                <input class="tumbler__input" type="radio" name="normal" id="2">
+                <div class="tumbler__anim"></div>
+
+                <div class="tumbler__side">
+                    <div class="tumbler__arrow tumbler__arrow_direction_left"></div>
+                    <label for="1" class="tumbler__paragraph tumbler__paragraph_left">past</label>
+                </div>
+
+                <div class="tumbler__side">
+                    <label for="2" class="tumbler__paragraph tumbler__paragraph_right">future</label>
+                    <div class="tumbler__arrow tumbler__arrow_direction_right"></div>
+                </div>
+            </form>
         </div>
 
-        <div class="tumbler__side">
-            <p class="tumbler__paragraph tumbler__paragraph_right">future</p>
-            <div class="tumbler__arrow tumbler__arrow_direction_right"></div>
-        </div>
-    </form>
-
-
-
-    <form class="tumbler tumbler_type_scaled">
-        <input class="tumbler__input" type="radio" name="field" checked>
-        <input class="tumbler__input" type="radio" name="field">
-        <div class="tumbler__anim tumbler__anim_type_scale"></div>
-
-        <div class="tumbler__side tumbler__side_type_scaled">
-            <div class="tumbler__arrow tumbler__arrow_direction_left tumbler__arrow_type_scaled"></div>
-            <p class="tumbler__paragraph tumbler__paragraph_left">past</p>
-        </div>
-
-        <div class="tumbler__side tumbler__side_type_scaled">
-            <p class="tumbler__paragraph tumbler__paragraph_right">future</p>
-            <div class="tumbler__arrow tumbler__arrow_direction_right tumbler__arrow_type_scaled"></div>
-        </div>
-    </form>
-
-
-
-    <form class="tumbler tumbler_type_neon">
-        <input class="tumbler__input" type="radio" name="field" checked>
-        <input class="tumbler__input" type="radio" name="field">
-        <div class="tumbler__anim tumbler__anim_type_neon"></div>
-
-        <div class="tumbler__side tumbler__side_type_neon">
-            <div class="tumbler__arrow tumbler__arrow_direction_left"></div>
-            <p class="tumbler__paragraph tumbler__paragraph_left">past</p>
-        </div>
-
-        <div class="tumbler__side tumbler__side_type_neon">
-            <p class="tumbler__paragraph tumbler__paragraph_right">future</p>
-            <div class="tumbler__arrow tumbler__arrow_direction_right"></div>
-        </div>
-    </form>
-
+    </div>
 </body>
 
 </html>

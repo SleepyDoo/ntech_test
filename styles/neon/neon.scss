@@ -1,23 +1,55 @@
-$color_on: #9b5de5;
+// Основные цвета | Main colors
+$color_on: #40916c;
+$color_off: #d8f3dc;
+
+// Дополнительные цвета | Additional colors
 $text-color: #edf6f9;
-$color_off: #118ab2;
-$color_off: #10002b;
-$arrow-color-on: #ffffff;
-$arrow-color-off: #9b5de5;
+$arrow-color-on: #d8f3dc;
+$arrow-color-off: #40916c;
 
-// $shadow-color1: #ef476f;
-// $shadow-color2: #ffd166;
-// $shadow-color3: #06d6a0;
+// Цвета градиента | Gradient colors
+$shadow-color1: #f6bd60;
+$shadow-color2: #f28482;
+$shadow-color3: #40916c;
 
-$shadow-color1: #fee440;
-$shadow-color2: #00bbf9;
-$shadow-color3: #9b5de5;
-
+// Размеры | Sizes
 $anim_dur: .2s;
 $width: 130px;
+$font-size: calc($width/9);
 
+
+// Стили | Styles
 .tumbler_type_neon {
     background-color: $color_off;
+    width: $width;
+}
+
+.tumbler__side_type_neon {
+    .tumbler__paragraph {
+        font-size: $font-size;
+
+        @if $width < 70px {
+            display: none;
+        }
+
+        @else {
+            display: flex;
+        }
+    }
+
+    .tumbler__arrow {
+        @if $width < 110px {
+            display: none;
+        }
+
+        @else {
+            display: flex;
+        }
+
+        @if $width < 70px {
+            display: flex;
+        }
+    }
 }
 
 .tumbler__anim_type_neon {
@@ -28,47 +60,63 @@ $width: 130px;
     color: $text-color;
 }
 
-.tumbler__input:first-of-type:checked~.tumbler__side_type_neon {
-    --left-arrow: #{$arrow-color-on};
-    --right-arrow: #{$arrow-color-off};
+.tumbler__input_type_neon {
+    &:first-of-type {
+        width: calc($width*0.45);
 
-    --left-p: #{$arrow-color-on};
-    --right-p: #{$arrow-color-off};
+        &:checked {
+            ~.tumbler__side_type_neon {
+                --left-arrow: #{$arrow-color-on};
+                --right-arrow: #{$arrow-color-off};
+
+                --left-p: #{$arrow-color-on};
+                --right-p: #{$arrow-color-off};
+            }
+
+            ~.tumbler__anim_type_neon {
+                left: 0;
+                animation: $anim_dur 1 alternate to-left-neon;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease;
+            }
+        }
+    }
+
+    &:last-of-type {
+        width: calc($width*0.55);
+
+        &:checked {
+            ~.tumbler__side_type_neon {
+                --right-arrow: #{$arrow-color-on};
+                --left-arrow: #{$arrow-color-off};
+
+                --left-p: #{$arrow-color-off};
+                --right-p: #{$arrow-color-on};
+            }
+
+            ~.tumbler__anim_type_neon {
+                left: calc($width - 60%);
+                animation: $anim_dur 1 alternate to-right-neon;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease;
+            }
+        }
+    }
 }
 
-.tumbler__input:last-of-type:checked~.tumbler__side_type_neon {
-    --right-arrow: #{$arrow-color-on};
-    --left-arrow: #{$arrow-color-off};
-
-    --left-p: #{$arrow-color-off};
-    --right-p: #{$arrow-color-on};
-}
-
-.tumbler__input:first-of-type:checked~.tumbler__anim_type_neon {
-    left: 0;
-    animation: $anim_dur 1 alternate to-left-neon;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-}
-
-.tumbler__input:last-of-type:checked~.tumbler__anim_type_neon {
-    left: calc($width - 60%);
-    animation: $anim_dur 1 alternate to-right-neon;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease;
-}
+// Анимации | Animations
 
 @keyframes to-left-neon {
 
     0% {
         border-radius: 80% 100% 100% 80%;
-        box-shadow: 30px 0 10px $shadow-color3, 40px 0 10px $shadow-color2, 65px 0 10px $shadow-color1;
+        box-shadow: calc($width/5) 0 10px $shadow-color3, calc($width/4) 0 10px $shadow-color2, calc($width/2) 0 10px $shadow-color1;
         width: 80%;
         left: calc($width - 60%);
     }
 
     50% {
-        box-shadow: 30px 0 10px $shadow-color3, 40px 0 10px $shadow-color2, 65px 0 10px $shadow-color1;
+        box-shadow: calc($width/5) 0 10px $shadow-color3, calc($width/4) 0 10px $shadow-color2, calc($width/2) 0 10px $shadow-color1;
     }
 
     100% {
@@ -83,13 +131,13 @@ $width: 130px;
 
     0% {
         border-radius: 100% 80% 80% 100%;
-        box-shadow: -30px 0 10px $shadow-color3, -40px 0 10px $shadow-color2, -65px 0 10px $shadow-color1;
+        box-shadow: calc($width/-5) 0 10px $shadow-color3, calc($width/-4) 0 10px $shadow-color2, calc($width/-2) 0 10px $shadow-color1;
         width: 80%;
         left: 0;
     }
 
     50% {
-        box-shadow: -30px 0 10px $shadow-color3, -40px 0 10px $shadow-color2, -65px 0 10px $shadow-color1;
+        box-shadow: calc($width/-5) 0 10px $shadow-color3, calc($width/-4) 0 10px $shadow-color2, calc($width/-2) 0 10px $shadow-color1;
     }
 
 
