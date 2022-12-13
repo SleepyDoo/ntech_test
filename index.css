@@ -1,3 +1,5 @@
+@import url("external/normalize.css");
+@import url("fonts/fonts.css");
 @import url("styles/style.css");
 @import url("styles/neon/neon.css");
 @import url("styles/scaled/scaled.css");

@@ -1,10 +1,10 @@
 .tumbler_type_neon {
   background-color: #d8f3dc;
-  width: 130px;
+  width: 150px;
 }
 
 .tumbler__side_type_neon .tumbler__paragraph {
-  font-size: 14.4444444444px;
+  font-size: 16.6666666667px;
   display: flex;
 }
 .tumbler__side_type_neon .tumbler__arrow {
@@ -20,7 +20,7 @@
 }
 
 .tumbler__input_type_neon:first-of-type {
-  width: 58.5px;
+  width: 67.5px;
 }
 .tumbler__input_type_neon:first-of-type:checked ~ .tumbler__side_type_neon {
   --left-arrow: #d8f3dc;
@@ -35,7 +35,7 @@
   animation-timing-function: ease;
 }
 .tumbler__input_type_neon:last-of-type {
-  width: 71.5px;
+  width: 82.5px;
 }
 .tumbler__input_type_neon:last-of-type:checked ~ .tumbler__side_type_neon {
   --right-arrow: #d8f3dc;
@@ -44,7 +44,7 @@
   --right-p: #d8f3dc;
 }
 .tumbler__input_type_neon:last-of-type:checked ~ .tumbler__anim_type_neon {
-  left: calc(130px - 60%);
+  left: calc(150px - 60%);
   animation: 0.2s 1 alternate to-right-neon;
   animation-fill-mode: forwards;
   animation-timing-function: ease;
@@ -53,15 +53,15 @@
 @keyframes to-left-neon {
   0% {
     border-radius: 80% 100% 100% 80%;
-    box-shadow: 26px 0 10px #40916c, 32.5px 0 10px #f28482, 65px 0 10px #f6bd60;
+    box-shadow: 30px 0 10px #40916c, 37.5px 0 10px #f28482, 75px 0 10px #f6bd60;
     width: 80%;
-    left: calc(130px - 60%);
+    left: calc(150px - 60%);
   }
   50% {
-    box-shadow: 26px 0 10px #40916c, 32.5px 0 10px #f28482, 65px 0 10px #f6bd60;
+    box-shadow: 30px 0 10px #40916c, 37.5px 0 10px #f28482, 75px 0 10px #f6bd60;
   }
   100% {
-    width: 58.5px;
+    width: 67.5px;
     border-radius: 10px;
     left: 0;
   }
@@ -69,17 +69,17 @@
 @keyframes to-right-neon {
   0% {
     border-radius: 100% 80% 80% 100%;
-    box-shadow: -26px 0 10px #40916c, -32.5px 0 10px #f28482, -65px 0 10px #f6bd60;
+    box-shadow: -30px 0 10px #40916c, -37.5px 0 10px #f28482, -75px 0 10px #f6bd60;
     width: 80%;
     left: 0;
   }
   50% {
-    box-shadow: -26px 0 10px #40916c, -32.5px 0 10px #f28482, -65px 0 10px #f6bd60;
+    box-shadow: -30px 0 10px #40916c, -37.5px 0 10px #f28482, -75px 0 10px #f6bd60;
   }
   100% {
-    width: 71.5px;
+    width: 82.5px;
     border-radius: 10px;
-    left: calc(130px - 55%);
+    left: calc(150px - 55%);
   }
 }
 

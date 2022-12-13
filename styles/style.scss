@@ -21,11 +21,20 @@ $arrow-size: 12px;
 // Стили окружения | Surrounding styles
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-family: 'Inter', 'Arial', sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    font-size: 15px;
 }
 
 .container {
@@ -37,22 +46,26 @@ body {
     justify-content: space-between;
     grid-template-rows: max-content;
     row-gap: 30px;
-    column-gap: 70px;
+    column-gap: 60px;
     padding: 30px 50px;
+    margin: 10px;
+    overflow: visible;
 }
 
 .container__tumblers {
-    grid-area: 2/2;
+    grid-row: 2;
+    grid-column: 2;
     height: 100%;
     display: flex;
     flex-direction: column;
     gap: 80px;
-    margin-right: 70px;
+    margin: 10px 70px 0 0;
 }
 
 .container__text {
     margin: 0;
-    grid-area: 2/1;
+    grid-row: 2;
+    grid-column: 1;
     color: #6c757d;
     line-height: 23px;
 }
@@ -61,7 +74,7 @@ body {
     margin: 0;
     grid-row: 1;
     grid-column: 1 / 3;
-    font-size: 40px;
+    font-size: 30px;
     color: #495057;
 }
 
@@ -98,6 +111,7 @@ body {
     overflow: hidden;
     position: relative;
     width: 45%;
+    gap: 5px;
 
     &:last-of-type {
         width: 55%;
@@ -108,7 +122,7 @@ body {
     color: $text-color;
     font-weight: 200;
     font-size: $font-size;
-    margin: 0 5px;
+    // margin: 0 5px;
     margin-bottom: calc($font-size/5);
 
     @if $width < 70px {
@@ -172,8 +186,6 @@ body {
 
 .tumbler__input {
     position: absolute;
-    margin: 0;
-    padding: 0;
     width: calc($width/2);
     height: $height;
     opacity: 0;
@@ -261,4 +273,38 @@ body {
         left: calc($width - 55%);
     }
 
+}
+
+@media screen and (max-width: 650px) {
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    .container__tumblers {
+        justify-self: center;
+        width: max-content;
+        margin: 0;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .container__heading {
+        font-size: 25px;
+        text-align: center;
+        grid-row: 1;
+        grid-column: 1;
+    }
+
+    .container__tumblers {
+        grid-row: 2;
+        grid-column: 1;
+    }
+
+    .container__text {
+        grid-row: 3;
+        grid-column: 1;
+        font-size: 12px;
+    }
+    
 }
